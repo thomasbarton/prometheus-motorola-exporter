@@ -1,7 +1,7 @@
 # Dockerfile References: https://docs.docker.com/engine/reference/builder/
 
 # Start from the latest golang alpine image
-FROM golang:alpine AS builder
+FROM golang:1.18-alpine3.16 AS builder
 
 # Set the Current Working Directory inside the container
 WORKDIR /app
@@ -19,7 +19,7 @@ COPY . .
 RUN go build -ldflags="-w -s" ./cmd/prometheus-moto-exporter
 
 # Build a small image
-FROM alpine
+FROM alpine:3.16
 
 COPY --from=builder /app/prometheus-moto-exporter /go/bin/prometheus-moto-exporter
 
