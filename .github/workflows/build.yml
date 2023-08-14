@@ -1,15 +1,6 @@
 on:
   pull_request:
-    branches:
-      - 'main'
-    paths:
-      - 'go.*'
-      - '**.go'
   push:
-    branches:
-      - 'main'
-      - 'staging'
-      - 'trying'
 
 jobs:
   build:
@@ -25,7 +16,7 @@ jobs:
   lint:
     name: 'Lint'
     runs-on: ubuntu-latest
-    needs: [build] # wait for build to lint
+    needs: [build]
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-go@v3
