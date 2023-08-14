@@ -2,8 +2,6 @@ package hnap
 
 import (
 	"encoding/json"
-	"strconv"
-
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
 
@@ -39,7 +37,7 @@ func (info *UpstreamInfo) Parse(row []string) error {
 
 	var err error
 
-	info.ID, err = strconv.ParseInt(row[idField], 10, 64)
+	info.ID, err = parseInt64(row[idField])
 	if err != nil {
 		return errors.Wrap(err, "parse ID")
 	}
@@ -47,25 +45,25 @@ func (info *UpstreamInfo) Parse(row []string) error {
 	info.LockStatus = row[lockStatusField]
 	info.Modulation = row[modulationField]
 
-	info.Channel, err = strconv.ParseInt(row[channelIDField], 10, 64)
+	info.Channel, err = parseInt64(row[channelIDField])
 	if err != nil {
 		return errors.Wrap(err, "parse channel ID")
 	}
 
-	info.SymbolRate, err = strconv.ParseInt(row[symbolRateField], 10, 64)
+	info.SymbolRate, err = parseInt64(row[symbolRateField])
 	if err != nil {
 		return errors.Wrap(err, "parse symbol rate")
 	}
 	// ksym -> sym
 	info.SymbolRate *= 1000
 
-	info.Frequency, err = strconv.ParseFloat(row[frequencyField], 64)
+	info.Frequency, err = parseFloat64(row[frequencyField])
 	if err != nil {
 		return errors.Wrap(err, "parse frequency")
 	}
 	info.Frequency *= 1000 * 1000 // Mhz -> hz
 
-	info.DecibelMillivolts, err = strconv.ParseFloat(row[dbmvField], 64)
+	info.DecibelMillivolts, err = parseFloat64(row[dbmvField])
 	if err != nil {
 		return errors.Wrap(err, "parse dBmV")
 	}
