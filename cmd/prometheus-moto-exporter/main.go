@@ -12,13 +12,6 @@ import (
 	"github.com/jahkeup/prometheus-moto-exporter/pkg/gather"
 )
 
-// TODO: read these in! Maybe use viper?
-const (
-	envEndpoint = "MOTO_ENDPOINT"
-	envUsername = "MOTO_USERNAME"
-	envPassword = "MOTO_PASSWORD"
-)
-
 func main() {
 	if err := App().Execute(); err != nil {
 		os.Exit(1)
@@ -49,36 +42,18 @@ func App() *cobra.Command {
 
 	cmd.PersistentFlags().BoolVar(&logDebug, "debug", false, "enable debug logging")
 
-	var (
-		endpointURL *url.URL
-	)
-
-	cmd.PersistentPreRunE = func(cmd *cobra.Command, args []string) error {
+	cmd.RunE = func(cmd *cobra.Command, args []string) error {
 		logrus.SetLevel(logrus.InfoLevel)
 		if logDebug {
 			logrus.SetLevel(logrus.DebugLevel)
-		}
-
-		if v := os.Getenv(envEndpoint); v != "" && !cmd.Flag("endpoint").Changed {
-			endpoint = os.Getenv(envEndpoint)
-		}
-		if v := os.Getenv(envUsername); v != "" && !cmd.Flag("username").Changed {
-			username = os.Getenv(envUsername)
-		}
-		if v := os.Getenv(envPassword); v != "" && !cmd.Flag("password").Changed {
-			password = os.Getenv(envPassword)
 		}
 
 		parsedEndpoint, err := url.Parse(endpoint)
 		if err != nil {
 			return err
 		}
-		endpointURL = parsedEndpoint
+		endpointURL := parsedEndpoint
 
-		return nil
-	}
-
-	cmd.RunE = func(cmd *cobra.Command, args []string) error {
 		logrus.WithFields(logrus.Fields{
 			"endpoint": endpointURL,
 			"username": username,

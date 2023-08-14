@@ -19,11 +19,7 @@ func NewCheckCommand() *cobra.Command {
 		SilenceUsage: true,
 	}
 
-	var (
-		endpointURL *url.URL
-	)
-
-	cmd.PreRunE = func(cmd *cobra.Command, args []string) error {
+	cmd.RunE = func(cmd *cobra.Command, args []string) error {
 		endpoint, err := cmd.Flags().GetString("endpoint")
 		if err != nil {
 			return err
@@ -32,12 +28,8 @@ func NewCheckCommand() *cobra.Command {
 		if err != nil {
 			return err
 		}
-		endpointURL = parsedEndpoint
+		endpointURL := parsedEndpoint
 
-		return nil
-	}
-
-	cmd.RunE = func(cmd *cobra.Command, args []string) error {
 		username, err := cmd.Flags().GetString("username")
 		if err != nil {
 			return err
