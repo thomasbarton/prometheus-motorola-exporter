@@ -6,7 +6,7 @@ RUN go mod download && go mod verify
 COPY . .
 RUN go build -ldflags="-w -s" ./cmd/prometheus-moto-exporter
 
-FROM alpine:3.16
+FROM alpine:3.18
 COPY --from=builder /app/prometheus-moto-exporter /go/bin/prometheus-moto-exporter
 
 EXPOSE 9731
