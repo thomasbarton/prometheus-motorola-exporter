@@ -9,7 +9,7 @@ import (
 	"github.com/prometheus/common/expfmt"
 	"github.com/spf13/cobra"
 
-	"github.com/jahkeup/prometheus-moto-exporter/pkg/gather"
+	"github.com/thomasbarton/prometheus-moto-exporter/pkg/gather"
 )
 
 func NewCheckCommand() *cobra.Command {

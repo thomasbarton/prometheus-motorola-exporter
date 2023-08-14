@@ -1,6 +1,6 @@
 package gather
 
-import "github.com/jahkeup/prometheus-moto-exporter/pkg/hnap"
+import "github.com/thomasbarton/prometheus-moto-exporter/pkg/hnap"
 
 type Collection struct {
 	Upstream   []hnap.UpstreamInfo

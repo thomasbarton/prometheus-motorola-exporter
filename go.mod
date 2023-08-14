@@ -1,4 +1,4 @@
-module github.com/jahkeup/prometheus-moto-exporter
+module github.com/thomasbarton/prometheus-moto-exporter
 
 go 1.18
 

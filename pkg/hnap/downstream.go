@@ -5,7 +5,7 @@ import (
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
 
-	"github.com/jahkeup/prometheus-moto-exporter/pkg/plustable"
+	"github.com/thomasbarton/prometheus-moto-exporter/pkg/plustable"
 )
 
 // var DSChannelHtml = "<tr align='center'><td class='moto-param-header-s'>&nbsp;&nbsp;&nbsp;Channel</td>";

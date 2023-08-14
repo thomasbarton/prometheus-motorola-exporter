@@ -11,7 +11,7 @@ The exporter can build with the common `go get`, `go build`, or `go install` usa
 To explicitly pull and build from its GitHub repository:
 
 ``` bash
-git clone https://github.com/jahkeup/prometheus-moto-exporter
+git clone https://github.com/thomasbarton/prometheus-moto-exporter
 cd prometheus-moto-exporter
 go build ./cmd/prometheus-moto-exporter
 ```

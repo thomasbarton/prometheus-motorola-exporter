@@ -12,8 +12,8 @@ import (
 	"github.com/sirupsen/logrus"
 	"golang.org/x/sync/errgroup"
 
-	"github.com/jahkeup/prometheus-moto-exporter/pkg/gather"
-	"github.com/jahkeup/prometheus-moto-exporter/pkg/hnap"
+	"github.com/thomasbarton/prometheus-moto-exporter/pkg/gather"
+	"github.com/thomasbarton/prometheus-moto-exporter/pkg/hnap"
 )
 
 const (

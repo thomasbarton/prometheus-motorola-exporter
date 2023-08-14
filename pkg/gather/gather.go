@@ -18,7 +18,7 @@ import (
 
 	"github.com/sirupsen/logrus"
 
-	"github.com/jahkeup/prometheus-moto-exporter/pkg/hnap"
+	"github.com/thomasbarton/prometheus-moto-exporter/pkg/hnap"
 )
 
 const hSOAPAction = "SOAPAction"

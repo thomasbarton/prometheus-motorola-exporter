@@ -9,7 +9,7 @@ import (
 	"github.com/spf13/cobra"
 	"golang.org/x/net/context"
 
-	"github.com/jahkeup/prometheus-moto-exporter/pkg/gather"
+	"github.com/thomasbarton/prometheus-moto-exporter/pkg/gather"
 )
 
 func main() {
