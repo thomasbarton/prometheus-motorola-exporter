@@ -1,4 +1,4 @@
-name: Container image build
+name: Build containers
 
 on:
   push:
@@ -9,7 +9,7 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
-  container-images:
+  build:
     runs-on: ubuntu-latest
     permissions:
       contents: read
